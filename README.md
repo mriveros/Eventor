@@ -1,6 +1,7 @@
 # Eventor [![Build Status](https://travis-ci.org/Twinpair/Eventor.svg?branch=master)](https://travis-ci.org/Twinpair/Eventor)
 
 START EXPLORING, CREATING, AND ATTENDING EVENTS NOW! (EventBrite Clone)
+NOW IS MODIFICATED FOR BIKER EVENTS
 
 Check it out: https://rails-eventor.herokuapp.com/
 
