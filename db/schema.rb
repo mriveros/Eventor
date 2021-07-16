@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20170623233700) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attends", force: :cascade do |t|
     t.integer  "attendee_id"
     t.integer  "attended_event_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["attended_event_id"], name: "index_attends_on_attended_event_id"
-    t.index ["attendee_id", "attended_event_id"], name: "index_attends_on_attendee_id_and_attended_event_id", unique: true
-    t.index ["attendee_id"], name: "index_attends_on_attendee_id"
+    t.index ["attended_event_id"], name: "index_attends_on_attended_event_id", using: :btree
+    t.index ["attendee_id", "attended_event_id"], name: "index_attends_on_attendee_id_and_attended_event_id", unique: true, using: :btree
+    t.index ["attendee_id"], name: "index_attends_on_attendee_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170623233700) do
     t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["event_id"], name: "index_comments_on_event_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 20170623233700) do
     t.float    "longitude"
     t.string   "address"
     t.integer  "category_id"
-    t.index ["category_id"], name: "index_events_on_category_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["category_id"], name: "index_events_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,4 +64,6 @@ ActiveRecord::Schema.define(version: 20170623233700) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "comments", "events"
+  add_foreign_key "events", "users"
 end
