@@ -16,7 +16,7 @@ Check it out: https://rails-eventor.herokuapp.com/
 * Framework - Ruby on Rails
 
 * Hosted on Heroku
-
+ 
 ## Deployment Instructions
 
 Make sure you have Rails and Git installed on your machine
